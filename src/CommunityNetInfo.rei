@@ -40,9 +40,6 @@ let net3G: netInfoCellularGeneration;
 [@bs.inline "4g"]
 let net4G: netInfoCellularGeneration;
 
-[@bs.inline "null"]
-let null: netInfoCellularGeneration;
-
 type details = {
   .
   "isConnectionExpensive": bool,

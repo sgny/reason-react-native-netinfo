@@ -30,12 +30,11 @@ Kind of the current network connection. Valid values are:
 
 Cellular generation of the current network connection. Valid values are:
 
-| Value   | Notes                                                                                           |
-| ------- | ----------------------------------------------------------------------------------------------- |
-| `null`  | Inlined as "null". Returned if the connection is not cellular or its type cannot be determined. |
-| `net2g` | Inlined as "2g". Returned for CDMA, EDGE, GPRS and IDEN connections                             |
-| `net3g` | Inlined as "3g". Returned for EHRPD, EVDO, HSPA, HSUPA, HSDPA and UTMS connections.             |
-| `net4g` | Inlined as "4g". Returned for HSPAP and LTE connections                                         |
+| Value   | Notes                                                                               |
+| ------- | ----------------------------------------------------------------------------------- |
+| `net2g` | Inlined as "2g". Returned for CDMA, EDGE, GPRS and IDEN connections                 |
+| `net3g` | Inlined as "3g". Returned for EHRPD, EVDO, HSPA, HSUPA, HSDPA and UTMS connections. |
+| `net4g` | Inlined as "4g". Returned for HSPAP and LTE connections                             |
 
 ### `details`
 
@@ -58,7 +57,13 @@ type netInfoState = {
 };
 ```
 
-`details` key will have value `Js.Null.empty` (`null`) when `_type` is `null` or `unknown`. `cellularGeneration` key within the `details` object will have value `Js.Null.empty` when `_type` is `wifi`, `bluetooth`, `ethernet`, `wimax`, `vpn` or `other`. Only when `_type` is `cellular`, `cellularGeneration` will be of type `netInfoCellularGeneration`.
+`details` key will have value `Js.Null.empty` (`null`) when `_type` is `null` or `unknown`.
+
+If the `details` objects is not `null`, the `cellularGeneration` key within will
+
+- have value `Js.Nullable.undefined` when `_type` is `wifi`, `bluetooth`, `ethernet`, `wimax`, `vpn` or `other`.
+- have value `Js.Nullable.null` if the connection is not cellular or its generation cannot be determined.
+- be of type `netInfoCellularGeneration` only when `_type` is `cellular` and its generation can be determined.
 
 ## Methods
 

@@ -40,9 +40,6 @@ let net3G = "3g";
 [@bs.inline]
 let net4G = "4g";
 
-[@bs.inline]
-let null = "null";
-
 type details = {
   .
   "isConnectionExpensive": bool,
