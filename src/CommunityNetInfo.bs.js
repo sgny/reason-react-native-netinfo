@@ -1,1 +1,15 @@
-/* This output is empty. Its source's type definitions, externals and/or unused code got optimized away. */
+'use strict';
+
+
+var ConnectionType = /* module */[];
+
+var EffectiveConnectionType = /* module */[];
+
+var IsConnected = /* module */[];
+
+var Legacy = /* module */[/* IsConnected */IsConnected];
+
+exports.ConnectionType = ConnectionType;
+exports.EffectiveConnectionType = EffectiveConnectionType;
+exports.Legacy = Legacy;
+/* No side effect */
