@@ -6,7 +6,12 @@ These are BuckleScript bindings to [`React Native NetInfo`](https://github.com/r
 
 Version of these bindings follow that of the `React Native NetInfo` package.
 
-You may update your existing code using `NetInfo` module of `ReactNative` by replacing references to the `ReactNative.NetInfo` module with `CommunityNetInfo.Legacy`.
+| Version     | React Native version         |
+| ----------- | ---------------------------- |
+| 4.00-beta   | 0.60 or 0.59.x with [jetifier](https://github.com/mikehardy/jetifier) | 
+| 3.2.x       | 0.59.x                       |
+
+You may update your existing code using `NetInfo` module of `reason-react-native` by replacing references to the `ReactNative.NetInfo` module with `CommunityNetInfo.Legacy`.
 
 ## Installation
 
@@ -20,7 +25,12 @@ With `npm`:
 npm install reason-react-native-netinfo
 ```
 
-`reason-react-native-maps` should be added to `bs-dependencies` in `BuckleScript` configuration of the project (`bsconfig.json`). For example:
+Once the package installation completes, `@react-native-community/netinfo` should be linked to your project. You may use the CLI as below
+```shell
+react-native link @react-native-community/netinfo
+```
+
+Finally, `reason-react-native-maps` should be added to `bs-dependencies` in `BuckleScript` configuration of the project (`bsconfig.json`). For example:
 
 ```json
 {
