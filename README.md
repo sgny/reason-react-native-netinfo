@@ -8,6 +8,18 @@ Version of these bindings follow that of the `React Native NetInfo` package.
 
 You may update your existing code using `NetInfo` module of `ReactNative` by replacing references to the `ReactNative.NetInfo` module with `CommunityNetInfo.Legacy`.
 
+## Installation
+
+With `yarn`:
+```shell
+yarn add reason-react-native-netinfo
+```
+
+With `npm`:
+```shell
+npm install reason-react-native-netinfo
+```
+
 ## Types
 
 ### `netInfoStateType`
@@ -42,7 +54,7 @@ Cellular generation of the current network connection. Valid values are:
 type details = {
   .
   "isConnectionExpensive": bool,
-  "cellularGeneration": Js.Null.t(netInfoCellularGeneration),
+  "cellularGeneration": Js.Nullable.t(netInfoCellularGeneration),
 };
 ```
 
