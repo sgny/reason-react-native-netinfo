@@ -20,6 +20,16 @@ With `npm`:
 npm install reason-react-native-netinfo
 ```
 
+`reason-react-native-maps` should be added to `bs-dependencies` in `BuckleScript` configuration of the project (`bsconfig.json`). For example:
+
+```json
+{
+  ...
+  "bs-dependencies": ["reason-react", "reason-react-native", "reason-react-native-maps"],
+  ...
+}
+```
+
 ## Types
 
 ### `netInfoStateType`
