@@ -2,11 +2,27 @@
 
 [![Version](https://img.shields.io/npm/v/reason-react-native-netinfo.svg)](https://www.npmjs.com/package/reason-react-native-netinfo)
 
-These are BuckleScript bindings to [`React Native NetInfo`](https://github.com/react-native-community/react-native-netinfo), in Reason syntax. `NetInfo` has been removed in RN 0.60, but as that release has breaking changes, this package is intended to work with RN 0.59.x releases as well. Accordingly, to avoid namespace clashes with the `NetInfo` module in `reason-react-native` (as would happen with `open React Native`), the module has been named `CommunityNetInfo`. In future releases, it is intended that the module be renamed `NetInfo`.
+These are BuckleScript bindings to [`React Native NetInfo`](https://github.com/react-native-community/react-native-netinfo), in Reason syntax. `NetInfo` has been removed in RN 0.60. This branch is currently tagged as beta due to the breaking change in RN 0.60 to use `AndroidX`.
+
+All dependencies must use either the support library or `AndroidX` - mix and match is not allowed. Version 4.0.0 of `react-native-netinfo` uses `AndroidX` and maybe used in RN 0.60, as is, or with RN 0.59.x in conjunction with (jetifier)[https://github.com/mikehardy/jetifier]).
+
+To avoid namespace clashes with the `NetInfo` module in `reason-react-native` (as would happen with `open React Native`), the module has been named `CommunityNetInfo`. In future releases, it is intended that the module be renamed `NetInfo`.
 
 Version of these bindings follow that of the `React Native NetInfo` package.
 
 You may update your existing code using `NetInfo` module of `ReactNative` by replacing references to the `ReactNative.NetInfo` module with `CommunityNetInfo.Legacy`.
+
+## Installation
+
+With yarn:
+```shell
+yarn add reason-react-native-netinfo
+```
+
+With npm:
+```shell
+npm install reason-react-native-netinfo
+```
 
 ## Types
 

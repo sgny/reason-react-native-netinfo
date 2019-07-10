@@ -1,6 +1,6 @@
 {
   "name": "reason-react-native-netinfo",
-  "version": "3.2.4",
+  "version": "4.0.0-beta.0",
   "author": "sgny (https://github.com/sgny)",
   "repository": "https://github.com/sgny/reason-react-native-netinfo.git",
   "license": "MIT",
@@ -24,6 +24,6 @@
     "reason-react-native": "^0.60.0"
   },
   "dependencies": {
-    "@react-native-community/netinfo": "~3.2.0"
+    "@react-native-community/netinfo": "~4.0.0"
   }
 }
