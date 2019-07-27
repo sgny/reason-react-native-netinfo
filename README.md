@@ -30,12 +30,12 @@ Once the package installation completes, `@react-native-community/netinfo` shoul
 react-native link @react-native-community/netinfo
 ```
 
-Finally, `reason-react-native-maps` should be added to `bs-dependencies` in `BuckleScript` configuration of the project (`bsconfig.json`). For example:
+Finally, `reason-react-native-netinfo` should be added to `bs-dependencies` in `BuckleScript` configuration of the project (`bsconfig.json`). For example:
 
 ```json
 {
   ...
-  "bs-dependencies": ["reason-react", "reason-react-native", "reason-react-native-maps"],
+  "bs-dependencies": ["reason-react", "reason-react-native", "reason-react-native-netinfo"],
   ...
 }
 ```
