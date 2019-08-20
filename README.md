@@ -1,41 +1,49 @@
 # BuckleScript bindings to React Native NetInfo
 
-[![Version](https://img.shields.io/npm/v/reason-react-native-netinfo.svg)](https://www.npmjs.com/package/reason-react-native-netinfo)
+[![Version](https://img.shields.io/npm/v/@reason-react-native/netinfo.svg)](https://www.npmjs.com/@reason-react-native/netinfo)
 
-These are BuckleScript bindings to [`React Native NetInfo`](https://github.com/react-native-community/react-native-netinfo), in Reason syntax. `NetInfo` has been removed in RN 0.60, but as that release has breaking changes, this package is intended to work with RN 0.59.x releases as well. Accordingly, to avoid namespace clashes with the `NetInfo` module in `reason-react-native` (as would happen with `open React Native`), the module has been named `CommunityNetInfo`. In future releases, it is intended that the module be renamed `NetInfo`.
+These are BuckleScript bindings to [`React Native NetInfo`](https://github.com/react-native-community/react-native-netinfo), in Reason syntax. `NetInfo` has been removed in React Native 0.60, but as that release has breaking changes, this package is intended to work with React Native 0.59.x releases as well. Accordingly, to avoid namespace clashes with the `NetInfo` module in `reason-react-native` (as would happen with `open React Native`) and for consistency with other projects, the module has been named `ReactNativeNetInfo`.
 
-Version of these bindings follow that of the `React Native NetInfo` package.
+Version of these bindings follow that of the `React Native NetInfo` package. React Native versions 0.59.x and 0.60.x are supported, however [jetifier](https://github.com/mikehardy/jetifier) is required to support versions 0.59.x.
 
-| Version     | React Native version         |
-| ----------- | ---------------------------- |
-| 4.00-beta   | 0.60 or 0.59.x with [jetifier](https://github.com/mikehardy/jetifier) | 
-| 3.2.x       | 0.59.x                       |
+| Version     | React Native version         | `npm` package for Reason bindings |
+| ----------- | ---------------------------- | --------------------------------- |
+| 4.1.x       | 0.60 or 0.59.x with [jetifier](https://github.com/mikehardy/jetifier) | `@reason-react-native/netinfo`    |
+| 3.2.x       | 0.59.x                       | [`reason-react-native-netinfo`](https://www.npmjs.com/package/reason-react-native-netinfo)     |
 
-You may update your existing code using `NetInfo` module of `reason-react-native` by replacing references to the `ReactNative.NetInfo` module with `CommunityNetInfo.Legacy`.
+You may update your existing code using the `NetInfo` module of `reason-react-native` by replacing references to the `ReactNative.NetInfo` module with `ReactNativeNetInfo.Legacy`. However, do not that the new API is more straightforward.
+
+## Breaking Changes
+
+- Moved from [sgny/reason-react-native-netinfo](https://github.com/sgny/reason-react-native-netinfo#readme). `npm` package was previously named `reason-react-native-netinfo`. Please update your dependencies accordingly.
+
+- The module is renamed to `ReactNativeNetInfo` (previously`CommunityNetInfo`).
+
+- Releases require use of [jetifier](https://github.com/mikehardy/jetifier) for versions 0.59.x of React Native. You may continue to use [`reason-react-native-netinfo`](https://www.npmjs.com/package/reason-react-native-netinfo) version 3.2.x if you do not wish to use `jetifier`.
 
 ## Installation
 
 With `yarn`:
 ```shell
-yarn add reason-react-native-netinfo
+yarn add @reason-react-native/netinfo
 ```
 
 With `npm`:
 ```shell
-npm install reason-react-native-netinfo
+npm install @reason-react-native/netinfo
 ```
 
-Once the package installation completes, `@react-native-community/netinfo` should be linked to your project. You may use the CLI as below
+Once package installation completes, `@react-native-community/netinfo` should be linked to your project. You may use the CLI as below:
 ```shell
 react-native link @react-native-community/netinfo
 ```
 
-Finally, `reason-react-native-netinfo` should be added to `bs-dependencies` in `BuckleScript` configuration of the project (`bsconfig.json`). For example:
+Finally, `@reason-react-native/netinfo` should be added to `bs-dependencies` in `BuckleScript` configuration of the project (`bsconfig.json`). For example:
 
 ```json
 {
   ...
-  "bs-dependencies": ["reason-react", "reason-react-native", "reason-react-native-netinfo"],
+  "bs-dependencies": ["reason-react", "reason-react-native", "@reason-react-native/netinfo"],
   ...
 }
 ```
@@ -112,7 +120,7 @@ Below example demonstrates determination of the cellular connection generation, 
 ```reason
 React.useEffect0(() => {
   Js.Promise.(
-    CommunityNetInfo.fetch()
+    ReactNativeNetInfo.fetch()
     |> then_(w =>
          {
            switch (w##details->Js.Null.toOption) {
@@ -128,9 +136,9 @@ React.useEffect0(() => {
                  "Connection generation unknown"->Js.Console.warn;
                }
              | Some(z) =>
-               if (z == CommunityNetInfo.net2G) {
+               if (z == ReactNativeNetInfo.net2G) {
                  "2G connection"->Js.Console.warn;
-               } else if (z == CommunityNetInfo.net3G) {
+               } else if (z == ReactNativeNetInfo.net3G) {
                  "3G connection"->Js.Console.warn;
                } else {
                  "4G connection"->Js.Console.warn;
@@ -166,7 +174,7 @@ Below example demonstrates subscribing to changes in connection state:
 ```reason
 React.useEffect0(() => {
   let remove =
-    CommunityNetInfo.addEventListener(w =>
+    ReactNativeNetInfo.addEventListener(w =>
       (
         switch (w##details->Js.Null.toOption) {
         | None => "Connection type is none or unknown"
@@ -180,9 +188,9 @@ React.useEffect0(() => {
               "Connection generation unknown";
             }
           | Some(z) =>
-            if (z == CommunityNetInfo.net2G) {
+            if (z == ReactNativeNetInfo.net2G) {
               "2G connection";
-            } else if (z == CommunityNetInfo.net3G) {
+            } else if (z == ReactNativeNetInfo.net3G) {
               "3G connection";
             } else {
               "4G connection";
@@ -210,7 +218,7 @@ Below example demonstrates its use within a `Text` component:
 ```reason
 <Text>
   (
-    switch (CommunityNetInfo.useNetInfo()##details->Js.Null.toOption) {
+    switch (ReactNativeNetInfo.useNetInfo()##details->Js.Null.toOption) {
     | None => "Connection type is none or unknown"
     | Some(x) =>
       let y = x##cellularGeneration;
@@ -222,9 +230,9 @@ Below example demonstrates its use within a `Text` component:
           "Connection generation unknown";
         }
       | Some(z) =>
-        if (z == CommunityNetInfo.net2G) {
+        if (z == ReactNativeNetInfo.net2G) {
           "2G connection";
-        } else if (z == CommunityNetInfo.net3G) {
+        } else if (z == ReactNativeNetInfo.net3G) {
           "3G connection";
         } else {
           "4G connection";

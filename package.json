@@ -1,8 +1,8 @@
 {
-  "name": "reason-react-native-netinfo",
-  "version": "3.2.4",
+  "name": "@reason-react-native/netinfo",
+  "version": "4.1.0",
   "author": "sgny (https://github.com/sgny)",
-  "repository": "https://github.com/sgny/reason-react-native-netinfo.git",
+  "repository": "https://github.com/reasonml-community/reason-react-native.git",
   "license": "MIT",
   "keywords": [
     "reason",
@@ -24,6 +24,6 @@
     "reason-react-native": "^0.60.0"
   },
   "dependencies": {
-    "@react-native-community/netinfo": "~3.2.0"
+    "@react-native-community/netinfo": "~4.1.0"
   }
 }
